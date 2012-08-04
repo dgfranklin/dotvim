@@ -1,5 +1,6 @@
 " colorscheme
 colorscheme custom
+
 " Set syntax on
 syntax on
 " Indent automatically depending on filetype
@@ -31,6 +32,9 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap linest
+
+call pathogen#runtime_appen_all_bundles()
+call pathogen#helptags()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Language specific

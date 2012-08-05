@@ -1,8 +1,12 @@
-" colorscheme
-colorscheme custom
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
 
-" Set syntax on
-syntax on
+syntax enable
+set background=dark
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans=1
+colorscheme solarized
+
 " Indent automatically depending on filetype
 filetype plugin on
 filetype indent on
@@ -18,7 +22,16 @@ set ic
 set backspace=indent,eol,start
 
 set ruler
-set nofoldenable
+
+"""  Folding
+set foldmethod=indent
+set foldlevel=99
+
+""" Tab Completion
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest,preview
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -33,8 +46,11 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap linest
 
-call pathogen#runtime_appen_all_bundles()
-call pathogen#helptags()
+
+""""""""""""""""""""""""
+" => Key Bindings
+"""""""""""""""""""""""
+map <F2> :NERDTreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Language specific

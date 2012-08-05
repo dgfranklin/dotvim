@@ -3,8 +3,6 @@ call pathogen#helptags()
 
 syntax enable
 set background=dark
-"let g:solarized_termcolors=256
-"let g:solarized_termtrans=1
 colorscheme solarized
 
 " Indent automatically depending on filetype
@@ -24,7 +22,7 @@ set backspace=indent,eol,start
 set ruler
 
 """  Folding
-set foldmethod=indent
+set foldmethod=syntax
 set foldlevel=99
 
 """ Tab Completion
@@ -51,6 +49,7 @@ set wrap "Wrap linest
 " => Key Bindings
 """""""""""""""""""""""
 map <F2> :NERDTreeToggle<CR>
+nmap <F8> :TagbarToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Language specific

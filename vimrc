@@ -61,8 +61,7 @@ autocmd FileType make set noexpandtab
 " => LaTex 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:tex_flavor='latex'
-
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 --interaction=nonstopmode $*'
 let g:Tex_ViewRule_pdf = 'Skim'
-
+autocmd FileType tex map <f3> :w<cr><leader>ll

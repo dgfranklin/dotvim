@@ -1,8 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/Users/dgfranklin/.vim'
 let g:netrw_dirhist_2='/private/etc/paths.d'
 let g:netrw_dirhist_3='/Users/dgfranklin/.vim'
 let g:netrw_dirhist_4='/Users/dgfranklin/Dropbox/CMU/15/213/tshlab'
 let g:netrw_dirhist_5='/Users/dgfranklin/Dropbox/CMU/15/213/proxylab'
 let g:netrw_dirhist_6='/Users/dgfranklin/.vim'
+let g:netrw_dirhist_7='/Users/dgfranklin/Dropbox/CMU/15/213/proxylab'

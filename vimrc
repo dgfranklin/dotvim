@@ -65,3 +65,4 @@ let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 --interaction=nonstopmode $*'
 let g:Tex_ViewRule_pdf = 'Skim'
 autocmd FileType tex map <f3> :w<cr><leader>ll
+autocmd FileType tex set spell

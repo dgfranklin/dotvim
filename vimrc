@@ -35,11 +35,10 @@ set completeopt=menuone,longest,preview
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set expandtab
 set shiftwidth=4
-set tabstop=8
+set tabstop=4
 set softtabstop=4
 set smarttab
 set lbr
-set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap linest
@@ -55,14 +54,12 @@ nmap <F8> :TagbarToggle<CR>
 " => Language specific
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufNewFile,BufRead *.c0 setf c
+au BufNewFile,BufRead *.sig set filetype=sml
 autocmd FileType make set noexpandtab
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => LaTex 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Latex"
 let g:tex_flavor='latex'
 let g:Tex_DefaultTargetFormat = 'pdf'
 let g:Tex_CompileRule_pdf = 'pdflatex -synctex=1 --interaction=nonstopmode $*'
 let g:Tex_ViewRule_pdf = 'Skim'
-autocmd FileType tex map <f3> :w<cr><leader>ll
-autocmd FileType tex set spell
+let g:Tex_UseMakefile = 0

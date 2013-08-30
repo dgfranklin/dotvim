@@ -3,10 +3,7 @@
 	url = https://github.com/vim-scripts/The-NERD-tree.git
 [submodule "bundle/supertab"]
 	path = bundle/supertab
-    url = https://github.com/ervandew/supertab.git
-[submodule "bundle/solarized"]
-    path = bundle/solarized
-    url = https://github.com/altercation/vim-colors-solarized
+	url = https://github.com/ervandew/supertab.git
 [submodule "bundle/vim-latex"]
 	path = bundle/vim-latex
 	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex

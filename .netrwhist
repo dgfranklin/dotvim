@@ -1,3 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/Users/dgfranklin/.vim'
+let g:netrw_dirhist_2='/Users/dgfranklin/Dropbox/CMU/33/132/hw/14/study-guide'
+let g:netrw_dirhist_3='/Users/dgfranklin/Dropbox/CMU/15/210/babblelab-handout/lib'
+let g:netrw_dirhist_4='/Users/dgfranklin/Dropbox/CMU/15/221/wtm/www/scripts'
+let g:netrw_dirhist_5='/Users/dgfranklin/Desktop/wtm/www/scripts'
+let g:netrw_dirhist_6='/Users/dgfranklin/Dropbox/CMU/15/221/wtm/www/scripts'
+let g:netrw_dirhist_7='/Users/dgfranklin/whats-the-film/progress-report/progress'

@@ -1,3 +1,14 @@
+" Setting up Vundle - the vim plugin bundler
+let install_vundle_bundles=0
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle.."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    let install_vundle_bundles=1
+endif
+
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/vundle/
@@ -10,6 +21,12 @@ Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 Bundle 'majutsushi/tagbar'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/syntastic'
+
+if install_vundle_bundles == 1
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :BundleInstall
+endif
 
 syntax enable
 set background=dark

@@ -16,11 +16,13 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
-Bundle 'ervandew/supertab'
 Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 Bundle 'majutsushi/tagbar'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'scrooloose/syntastic'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'DoxygenToolkit.vim'
+Bundle 'bronson/vim-trailing-whitespace'
 
 if install_vundle_bundles == 1
     echo "Installing Bundles, please ignore key map error messages"
@@ -31,13 +33,16 @@ endif
 syntax enable
 set background=dark
 colorscheme solarized
+set spell
+set cc=80
+set wildmode=longest,list
 
 " Indent automatically depending on filetype
 filetype plugin on
 filetype indent on
 
-" Turn on line numbering. Turn it off with "set nonu" 
-set nu 
+" Turn on line numbering. Turn it off with "set nonu"
+set nu
 
 " Higlhight search
 set hls
@@ -51,11 +56,6 @@ set ruler
 """  Folding
 set foldmethod=syntax
 set foldlevel=99
-
-""" Tab Completion
-au FileType python set omnifunc=pythoncomplete#Complete
-let g:SuperTabDefaultCompletionType = "context"
-set completeopt=menuone,longest,preview
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
@@ -76,6 +76,7 @@ set wrap "Wrap linest
 """""""""""""""""""""""
 map <F2> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Language specific

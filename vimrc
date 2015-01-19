@@ -27,6 +27,7 @@ Plugin 'DoxygenToolkit.vim'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-obsession'
+Plugin 'Valloric/YouCompleteMe'
 
 if install_vundle_bundles == 1
     echo "Installing Bundles, please ignore key map error messages"
@@ -90,3 +91,10 @@ set wrap "Wrap linest
 """""""""""""""""""""""
 nmap <F2> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
+
+""
+" Disable YouCompleteMe by default
+" ""
+let g:ycm_filetype_whitelist = {}
+let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
+let g:ycm_extra_conf_globlist = ['~/Dropbox/cmu/15/*', '~/Dropbox/cmu/33/*']

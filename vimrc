@@ -27,7 +27,8 @@ Plugin 'DoxygenToolkit.vim'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-obsession'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 
 if install_vundle_bundles == 1
     echo "Installing Bundles, please ignore key map error messages"
@@ -39,6 +40,7 @@ syntax enable
 set background=dark
 colorscheme solarized
 set spell
+let g:easytag_async=1
 
 if exists('+breakindent')
     set breakindent
@@ -92,9 +94,11 @@ set wrap "Wrap linest
 nmap <F2> :NERDTreeToggle<CR>
 nmap <F8> :TagbarToggle<CR>
 
-""
-" Disable YouCompleteMe by default
-" ""
-let g:ycm_filetype_whitelist = {}
-let g:ycm_global_ycm_extra_conf = "~/.vim/.ycm_extra_conf.py"
-let g:ycm_extra_conf_globlist = ['~/Dropbox/cmu/15/*', '~/Dropbox/cmu/33/*']
+
+" """
+" => Environment
+" """
+let env_specific_source=expand('~/.vim/env-specific/env.vim')
+if filereadable(env_specific_source)
+    execute 'source '.fnameescape(env_specific_source)
+endif

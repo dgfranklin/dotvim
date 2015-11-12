@@ -1,46 +1,38 @@
-set shell=/bin/bash
+set shell=/bin/zsh
 
 " Setting up Vundle - the vim plugin bundler
-let install_vundle_bundles=0
-let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
-if !filereadable(vundle_readme)
-    echo "Installing Vundle.."
-    echo ""
-    silent !mkdir -p ~/.vim/bundle
-    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
-    let install_vundle_bundles=1
+" Load vim-plug
+if empty(glob("~/.vim/autoload/plug.vim"))
+    execute '!curl -fLo ~/.vim/autoload/plug.vim https://raw.github.com/junegunn/vim-plug/master/plug.vim'
+    let install_bundles=0
 endif
 
 set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
 
 "Bundle 'lervag/vim-latex'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'gmarik/vundle'
-Plugin 'scrooloose/nerdtree'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/syntastic'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'DoxygenToolkit.vim'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tpope/vim-obsession'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+"Plugin 'DoxygenToolkit.vim'
+"Plugin 'LaTeX-Box-Team/LaTeX-Box'
+"Plugin 'majutsushi/tagbar'
+call plug#begin()
+Plug 'altercation/vim-colors-solarized'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'easymotion/vim-easymotion'
+Plug 'nelstrom/vim-visual-star-search'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-unimpaired'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+call plug#end()
 
-if install_vundle_bundles == 1
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :PluginInstall
-endif
 
 syntax enable
 set background=dark
-colorscheme solarized
 set spell
-let g:easytag_async=1
+colorscheme solarized
 
 if exists('+breakindent')
     set breakindent
@@ -52,19 +44,19 @@ if exists('+cc')
 else
     au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
-set wildmode=longest,list
 
 " Indent automatically depending on filetype
 filetype plugin on
 filetype indent on
 
 " Turn on line numbering. Turn it off with "set nonu"
-set nu
+set relativenumber
+set number
 
-" Higlhight search
-set hls
-" Case insensitive search
-set ic
+"" Search
+"set incsearch
+set ignorecase
+set smartcase
 
 set backspace=indent,eol,start
 
@@ -85,15 +77,53 @@ set smarttab
 set lbr
 set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap linest
+set wrap "Wrap lines
 
 
 """"""""""""""""""""""""
 " => Key Bindings
 """""""""""""""""""""""
 nmap <F2> :NERDTreeToggle<CR>
-nmap <F8> :TagbarToggle<CR>
+nmap <F8> :TagbarToggle<CR>S
+let mapleader = ","
 
+"" Easy Motion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+let g:EasyMotion_smartcase = 1
+nmap s <Plug>(easymotion-s2)
+omap s <Plug>(easymotion-t2)
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
+hi link EasyMotionTarget ErrorMsg
+hi link EasyMotionShade Comment
+hi link EasyMotionTarget2First ErrorMsg
+hi link EasyMotionTarget2Second ErrorMsg
+hi link EasyMotionMoveHL Search
+hi link EasyMotionIncSearch Search
+
+
+""
+" Tab completion of filenames
+""
+
+set wildmode=longest,list,full
+set wildmenu
+
+"""
+" => Ycm
+"""
+
+let g:ycm_always_populate_loc_list = 1
+let g:ycm_open_loclist_on_ycm_diags = 1
+
+
+"""
+" => FZF
+"""
+nnoremap <C-P> :FZF<CR>
+let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 
 " """
 " => Environment
@@ -101,4 +131,26 @@ nmap <F8> :TagbarToggle<CR>
 let env_specific_source=expand('~/.vim/env-specific/env.vim')
 if filereadable(env_specific_source)
     execute 'source '.fnameescape(env_specific_source)
+endif
+
+" Mouse
+set mouse+=a
+if &term =~ '^screen'
+    " tmux knows the extended mouse mode
+    set ttymouse=xterm2
+endif
+"
+
+"" Termninal
+"
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <A-h> <C-\><C-n><C-w>h
+  tnoremap <A-j> <C-\><C-n><C-w>j
+  tnoremap <A-k> <C-\><C-n><C-w>k
+  tnoremap <A-l> <C-\><C-n><C-w>l
+  nnoremap <A-h> <C-w>h
+  nnoremap <A-j> <C-w>j
+  nnoremap <A-k> <C-w>k
+  nnoremap <A-l> <C-w>l
 endif
